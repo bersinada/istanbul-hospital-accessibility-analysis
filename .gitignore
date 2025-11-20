@@ -1,1 +1,13 @@
-".ipynb_checkpoints" 
+# --- Jupyter Notebook Checkpoints ---
+.ipynb_checkpoints/
+
+# --- Large/Downloadable Raw Data ---
+# These files are automatically downloaded by ETL scripts.
+# Excluded to keep the repository lightweight and clean.
+turkiye_districts.json
+turkiye_ilceler.json
+ilce-sinirlari.json
+
+# --- System Files ---
+.DS_Store
+__pycache__/

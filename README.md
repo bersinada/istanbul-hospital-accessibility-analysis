@@ -1,22 +1,55 @@
 # Istanbul Hospital Accessibility Analysis 🏥
 
-This project allows you to visualize and analyze hospital accessibility in Istanbul. It calculates the number of hospitals within 1km, 2km, and 3km walking distances from specific locations.
+This project analyzes the spatial accessibility of healthcare facilities in Istanbul using Python and Geographic Information Systems (GIS). It utilizes **official real-world datasets** to visualize hospital density and calculate coverage areas.
 
-**Current Status:** _Running with Mock Data (Randomly generated coordinates for testing logic)._
+## 🚀 Live Demo
+**[Click here to view the Interactive Map](https://bersinada.github.io/istanbul-hospital-accessibility/)**
+
+## 📊 Project Overview
+The goal is to determine how accessible hospitals are to the population of Istanbul using spatial analysis techniques.
+
+**Current Status:** Phase 2 Complete (ETL & Real Data Integration).
+* **Data Source:** Official Ministry & Municipality Data.
+* **Analysis:** 2km Proximity Buffer Analysis.
 
 ## 🗺️ Features
+* **Automated ETL Pipelines:** Modular notebooks (`01_etl_districts`, `02_etl_hospitals`) to fetch, clean, and standardize raw data.
+* **Data Filtering:** Intelligent filtering to exclude non-emergency facilities (e.g., veterinarians, opticians) and focus on core hospitals.
+* **Spatial Analysis:** GeoPandas-based buffer analysis (UTM Projection) to determine service coverage.
+* **Interactive Visualization:** A Leaflet-based web map showing district boundaries and hospital clusters.
 
-* **Interactive Map:** Visualizes hospitals and target locations on a web map.
-* **Heatmap:** Shows the density of healthcare facilities.
-* **Spatial Analysis:** Calculates proximity using GeoPandas buffer analysis.
+## 📂 Repository Structure
+This project follows a modular data science structure:
 
-## 🛠️ Technologies
+* **`etl_districts.ipynb`**: Extracts Istanbul district boundaries from the National Ministry dataset (JSON).
+* **`etl_hospitals.ipynb`**: Processes raw Excel data from IBB, cleans coordinates, and filters for specific hospital categories.
+* **`analysis_main.ipynb`**: The core analysis notebook. Performs projection transformation (EPSG:32635), buffer analysis, and visualization.
+* **`requirements.txt`**: List of required Python libraries.
+* **`data/`**: (Optional) Folder for storing processed GeoJSON files.
 
-* Python
-* GeoPandas & Shapely
-* Folium (Leaflet.js wrapper)
+## 🛠️ Data Sources
+This project relies on open data provided by Turkish government bodies:
+1.  **District Boundaries:** Ministry of Environment, Urbanization and Climate Change (via ULASAV).
+2.  **Health Facilities:** Istanbul Metropolitan Municipality (IBB) Open Data Portal.
 
-## 🚀 How to View
+## ⚙️ Technologies
+* **Python** (3.9+)
+* **Geospatial:** `GeoPandas`, `Shapely`
+* **Data Processing:** `Pandas`, `OpenPyXL`
+* **Visualization:** `Folium`, `Matplotlib`
 
-1. Open `istanbul_hospital_accessibility.html` in your browser to see the interactive map.
-2. Check `istanbul_hospital_analysis.ipynb` for the source code and logic.
+## 🚀 How to Run Locally
+1. **Clone** the repository:
+   ```bash
+   git clone [https://github.com/bersinada/istanbul-hospital-accessibility.git](https://github.com/bersinada/istanbul-hospital-accessibility.git)
+
+2. **Install** dependencies:
+    ```bash
+    pip install -r requirements.txt
+
+3. **Run** the notebooks in order:
+    - First **01_etl_districts.ipynb**
+
+    - Then **02_etl_hospitals.ipynb**
+
+    - Finally **analysis_main.ipynb** to see the results.
